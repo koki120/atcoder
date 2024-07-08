@@ -2,7 +2,7 @@ import unittest
 import A
 
 
-class TestDoubleOrError(unittest.TestCase):
+class TestA(unittest.TestCase):
     def test_valid_integer(self):
         self.assertEqual(A.solver(iter(["678"])), 1356)
         self.assertEqual(A.solver(iter(["012"])), 24)

@@ -2,7 +2,7 @@ import unittest
 import B
 
 
-class TestDoubleOrError(unittest.TestCase):
+class TestB(unittest.TestCase):
     def test(self):
         self.assertEqual(
             B.solver(

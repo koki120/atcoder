@@ -19,4 +19,6 @@ def solver(input: Iterable[str]):
 
 
 if __name__ == "__main__":
-    print(solver(sys.stdin))
+    result = solver(sys.stdin)
+    for s in result:
+        print(s)

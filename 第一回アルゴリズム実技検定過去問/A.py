@@ -1,13 +1,10 @@
 from typing import Iterable
 import sys
+import copy
 
 
 def check_number(c):
     return c in "0123456789"
-
-
-def number_chr_to_number(c):
-    return int(c) if check_number(c) else None
 
 
 def string_to_number(num_string: str):
@@ -19,29 +16,28 @@ def solver(input: Iterable[str]):
     if not S:
         return "error"
 
-    is_zero_top = True
+    # 符号判定かつ符号を取り除く
     is_minus = S[0] == "-"
+    if is_minus:
+        S = S[1:]
+
+    # 不要なゼロを取り除く
+    S_len = len(S)
+    is_top = True
+    S_old = copy.deepcopy(S)
+    for i in range(S_len):
+        if S_old[i] == "0" and i != S_len - 1 and is_top:
+            S = S_old[i:]
+        else:
+            is_top = False
+
+    # 数字にアルファベットが入ってないかチェック
     num_string = ""
-
-    # 0 check
-    if S[0] == "0" and len(S) == 1:
-        return 0
-
-    # string to number
     for i, c in enumerate(S):
-        if i == 0 and is_minus:
-            continue
-
-        if c == "0" and is_zero_top:
-            continue
-        elif check_number(c):
-            is_zero_top = False
+        if check_number(c):
             num_string += c
         else:
             return "error"
-
-    if not num_string:
-        return "error"
 
     result = string_to_number(num_string) * 2
     return -result if is_minus else result
