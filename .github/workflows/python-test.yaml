@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Run tests 第一回アルゴリズム実技検定過去問
-        run:  |
-        cd 第一回アルゴリズム実技検定過去問
-        python -m unittest discover -s tests -p '*_test.py'
+      - name: Run tests
+        run: |
+          cd 第一回アルゴリズム実技検定過去問
+          python -m unittest discover -s tests -p '*_test.py'
